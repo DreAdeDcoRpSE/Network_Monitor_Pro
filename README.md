@@ -1,30 +1,30 @@
 # Network Monitor Pro
 A portable Windows tool for ping, traceroute, and route stability monitoring.
 
+
 ## Overview
 Network Monitor Pro is a Windows batch script that builds a PowerShell monitoring engine on the fly. It gives you an easy way to check for packet loss, route changes, latency spikes, unstable hops, and general network problems.
 
 There is no installation. You just run the file and go. It works on all modern Windows systems and stays fully portable.
 
 ## Screenshots
-
 ### Path Monitor Running
-![Path Monitor Running](https://github.com/user-attachments/assets/6258a4e5-0f00-4628-9496-7b18ebe58518)
+![Path Monitor Running](https://github.com/user-attachments/assets/38529219-05ad-4677-99c0-83f7e1339c10)
 
 ### Path Monitor Summary
-![Path Monitor Summary](https://github.com/user-attachments/assets/3d454f54-772b-4ff1-8af6-68bb7a95b8b7)
+![Path Monitor Summary](https://github.com/user-attachments/assets/2f06e081-6d88-4693-a5aa-cbeffc63b25a)
 
 ### Sample CSV Output
-![CSV Sample](https://github.com/user-attachments/assets/9f48cc8d-cc4d-49be-b80c-9401aa9e137e)
+![CSV Sample](https://github.com/user-attachments/assets/ff1ebee3-5814-4be5-a069-4b4b2193980b)
 
 ### Stability Graph Light
-<img width="1600" height="1000" alt="PathGraph_Final_8 8 8 8_light_20251207_110924" src="https://github.com/user-attachments/assets/244526a5-fc35-4861-b5ac-c4185f6365e7" />
+![PathGraph_Final_8 8 8 8_light_20251207_110924](https://github.com/user-attachments/assets/1ba03a1c-4d85-4c67-83c4-a33c9b3f874d)
 
 ### Stability Graph Dark
-<img width="1600" height="1000" alt="PathGraph_Final_8 8 8 8_dark_20251207_110924" src="https://github.com/user-attachments/assets/5a09e79d-b5d1-4d27-9061-d6557c8ac487" />
+![PathGraph_Final_8 8 8 8_dark_20251207_110924](https://github.com/user-attachments/assets/f494c992-de1e-4fbd-8071-f8729f260e04)
+
 
 ## Features
-
 ### Ping Monitoring
 - Live color coded ping results  
 - Shows latency spikes and packet loss  
@@ -56,8 +56,8 @@ There is no installation. You just run the file and go. It works on all modern W
 - No admin rights  
 - Uses PowerShell already built into Windows  
 
-## Who This Helps
 
+## Who This Helps
 ### Home Users
 - Checking WiFi stability  
 - Troubleshooting lag  
@@ -78,6 +78,7 @@ There is no installation. You just run the file and go. It works on all modern W
 - Checking game server routes  
 - Verifying if lag is local or provider based  
 
+
 ## How It Works
 The batch script writes a PowerShell script into the same directory. That PowerShell file handles:
 
@@ -90,8 +91,8 @@ The batch script writes a PowerShell script into the same directory. That PowerS
 
 You only interact with the menu in the batch file.
 
-## Feature Comparison
 
+## Feature Comparison
 | Feature | Windows Ping | Windows Tracert | Network Monitor Pro |
 |--------|--------------|------------------|----------------------|
 | Continuous monitoring | Yes | No | Yes |
@@ -104,11 +105,14 @@ You only interact with the menu in the batch file.
 | Single portable file | Kind of | Yes | Yes |
 | Menu driven | No | No | Yes |
 
+
 ## Installation
 There is no installation. Download the file and run it.
 
+
 ## Usage
 Choose an option from the main menu. Pick your target and duration. The script does everything else.
+
 
 ## Notes
 Traceroute usually takes about 10 to 20 seconds to start. This is normal for Windows because of hop delays and timeouts.
