@@ -1,4 +1,4 @@
-# Network Monitor Pro
+# Network Monitor Pro v2
 A portable Windows tool for ping, traceroute, and route stability monitoring.
 
 
