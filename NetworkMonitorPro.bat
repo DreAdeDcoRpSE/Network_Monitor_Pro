@@ -333,7 +333,13 @@ set PSFILE=%TEMP%\_netmonitor_temp.ps1
 >>"%PSFILE%" echo     $endTimestamp = Get-Date -Format "yyyyMMdd_HHmmss"
 >>"%PSFILE%" echo     $graphFile = Join-Path $graphDir "PathGraph_Final_${target}_${theme}_${endTimestamp}.png"
 >>"%PSFILE%" echo.
->>"%PSFILE%" echo     Add-Type -AssemblyName System.Windows.Forms.DataVisualization
+>>"%PSFILE%" echo     try {
+>>"%PSFILE%" echo         Add-Type -AssemblyName System.Windows.Forms.DataVisualization -ErrorAction Stop
+>>"%PSFILE%" echo         Add-Type -AssemblyName System.Drawing -ErrorAction Stop
+>>"%PSFILE%" echo     } catch {
+>>"%PSFILE%" echo         Write-Host "Charting assembly load failure: $($_.Exception.Message)" -ForegroundColor Red
+>>"%PSFILE%" echo         return
+>>"%PSFILE%" echo     }
 >>"%PSFILE%" echo     # Create the chart object
 >>"%PSFILE%" echo     $chart = New-Object System.Windows.Forms.DataVisualization.Charting.Chart
 >>"%PSFILE%" echo     $chart.Width = 1600
@@ -444,6 +450,9 @@ set PSFILE=%TEMP%\_netmonitor_temp.ps1
 >>"%PSFILE%" echo         }
 >>"%PSFILE%" echo     }
 >>"%PSFILE%" echo.
+>>"%PSFILE%" echo     Write-Host "Graph records found: $($csvData.Count)" -ForegroundColor Cyan
+>>"%PSFILE%" echo     Write-Host "Graph series created: $($chart.Series.Count)" -ForegroundColor Cyan
+>>"%PSFILE%" echo     Write-Host "Graph output file: $graphFile" -ForegroundColor Cyan
 >>"%PSFILE%" echo     # Attempt to save using the standard SaveImage method (usually works better in scripts)
 >>"%PSFILE%" echo     try {
 >>"%PSFILE%" echo         $chart.SaveImage($graphFile, [System.Drawing.Imaging.ImageFormat]::Png)
@@ -462,7 +471,7 @@ set PSFILE=%TEMP%\_netmonitor_temp.ps1
 >>"%PSFILE%" echo             $graphics.Dispose()
 >>"%PSFILE%" echo             $bitmap.Dispose()
 >>"%PSFILE%" echo         } catch {
->>"%PSFILE%" echo             Write-Host "Failed to save graph using both methods. Error: $($_.Exception.Message)" -ForegroundColor Red
+>>"%PSFILE%" echo             Write-Host "Failed to save graph using both methods. Full Error: $($_.Exception.ToString())" -ForegroundColor Red
 >>"%PSFILE%" echo         }
 >>"%PSFILE%" echo     }
 >>"%PSFILE%" echo     # Clean up chart resources
